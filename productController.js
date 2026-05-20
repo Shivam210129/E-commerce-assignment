@@ -1,11 +1,21 @@
-exports.getAllProducts = (req, res) => {
-  res.send("Fetching all products");
-};
 
-exports.addProduct = (req, res) => {
-  res.send("Adding a new product");
+
+const productService = require("../services/productService");
+
+exports.getAllProducts = (req, res) => {
+  const result = productService.getAllProductsService();
+
+  res.send(result);
 };
 
 exports.getProductById = (req, res) => {
-  res.send(`Fetching product with ID: ${req.params.id}`);
+  const result = productService.getProductByIdService(req.params.id);
+
+  res.send(result);
+};
+
+exports.addProduct = (req, res) => {
+  const result = productService.addProductService();
+
+  res.send(result);
 };
